@@ -9,6 +9,10 @@
 [node name="MainScene" type="Node2D" unique_id=587358703]
 script = ExtResource("1_52fb6")
 
+[node name="WallGenerateTimer" type="Timer" parent="." unique_id=2006398014]
+
+[node name="ReduceWallGenerateTimer" type="Timer" parent="." unique_id=283480765]
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2004601577]
 
 [node name="Fird" parent="." unique_id=316009980 instance=ExtResource("2_6l7je")]
@@ -20,3 +24,5 @@ script = ExtResource("1_52fb6")
 [node name="PauseMenu" parent="CanvasLayer" unique_id=1651803569 instance=ExtResource("4_6ev3c")]
 
 [node name="EndMenu" parent="CanvasLayer" unique_id=1585674089 instance=ExtResource("5_maf8m")]
+offset_top = -3.0
+offset_bottom = -3.0
