@@ -1,13 +1,17 @@
 [gd_scene format=3 uid="uid://gk8tp4yay64k"]
 
 [ext_resource type="Texture2D" uid="uid://b20jcw50ksk7b" path="res://Materials/Fird.png" id="1_eft4c"]
+[ext_resource type="Script" uid="uid://4ljy7xh0ucjk" path="res://Scripts/fird.gd" id="1_qd1s0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gluwk"]
+radius = 39.0
 
 [node name="Fird" type="RigidBody2D" unique_id=316009980]
+script = ExtResource("1_qd1s0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2002037398]
 texture = ExtResource("1_eft4c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1651678596]
+position = Vector2(-5, 1.5)
 shape = SubResource("CircleShape2D_gluwk")

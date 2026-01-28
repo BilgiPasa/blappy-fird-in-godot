@@ -1,8 +1,22 @@
 [gd_scene format=3 uid="uid://cuqvarswgfx6c"]
 
 [ext_resource type="Script" uid="uid://6m06vxygur2v" path="res://Scripts/main_scene.gd" id="1_52fb6"]
+[ext_resource type="PackedScene" uid="uid://gk8tp4yay64k" path="res://Scenes/fird.tscn" id="2_6l7je"]
+[ext_resource type="PackedScene" uid="uid://bsfpir5v32rp6" path="res://Scenes/start_menu.tscn" id="3_iacmt"]
+[ext_resource type="PackedScene" uid="uid://dcbn6tmtfv7a2" path="res://Scenes/pause_menu.tscn" id="4_6ev3c"]
+[ext_resource type="PackedScene" uid="uid://cqjdu8i38gbp" path="res://Scenes/end_menu.tscn" id="5_maf8m"]
 
 [node name="MainScene" type="Node2D" unique_id=587358703]
 script = ExtResource("1_52fb6")
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2004601577]
+
+[node name="Fird" parent="." unique_id=316009980 instance=ExtResource("2_6l7je")]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1202690820]
+
+[node name="StartMenu" parent="CanvasLayer" unique_id=1215464117 instance=ExtResource("3_iacmt")]
+
+[node name="PauseMenu" parent="CanvasLayer" unique_id=1651803569 instance=ExtResource("4_6ev3c")]
+
+[node name="EndMenu" parent="CanvasLayer" unique_id=1585674089 instance=ExtResource("5_maf8m")]
