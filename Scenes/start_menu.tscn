@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bsfpir5v32rp6"]
+
+[ext_resource type="Script" uid="uid://ctmg58m621ndr" path="res://Scripts/start_menu.gd" id="1_juhg0"]
+
+[node name="StartMenu" type="Control" unique_id=1215464117]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_juhg0")
