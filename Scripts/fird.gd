@@ -1,11 +1,25 @@
 extends RigidBody2D
 
+signal start_game
 
-# Called when the node enters the scene tree for the first time.
+var fird_gravity_scale: int = 5
+var jump_force: int = 1800
+var jump_input: bool
+
 func _ready() -> void:
-	pass # Replace with function body.
+	gravity_scale = 0;
 
+func _physics_process(_delta) -> void:
+	if jump_input:
+		jump_input = false
+		linear_velocity = jump_force * Vector2.UP
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+func _input(event) -> void:
+	if event.is_action_pressed("fird_jump") && !Globals.game_paused:
+		if Globals.game_started:
+			jump_input = true
+		else:
+			gravity_scale = fird_gravity_scale
+			jump_input = true
+			Globals.game_started = true
+			emit_signal("start_game")
