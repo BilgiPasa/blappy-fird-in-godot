@@ -1,22 +1,29 @@
 [gd_scene format=3 uid="uid://brc8ty2wff25x"]
 
 [ext_resource type="Texture2D" uid="uid://ch8dnl4b7ph2l" path="res://Materials/BrickWall.png" id="1_2bj67"]
+[ext_resource type="Script" uid="uid://ckowhkdl6fv2l" path="res://Scripts/walls.gd" id="1_cxhnf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cxhnf"]
+size = Vector2(100, 500)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ai68l"]
+size = Vector2(100, 500)
 
 [node name="Walls" type="RigidBody2D" unique_id=568220522]
+script = ExtResource("1_cxhnf")
 
 [node name="UpperWallSprite" type="Sprite2D" parent="." unique_id=966703805]
+position = Vector2(0, -500)
 texture = ExtResource("1_2bj67")
 
 [node name="LowerWallSprite" type="Sprite2D" parent="." unique_id=1524226099]
-position = Vector2(0, -4)
+position = Vector2(0, 500)
 texture = ExtResource("1_2bj67")
 
 [node name="UpperWallCollShape" type="CollisionShape2D" parent="." unique_id=7386722]
+position = Vector2(0, -500)
 shape = SubResource("RectangleShape2D_cxhnf")
 
 [node name="LowerWallCollShape" type="CollisionShape2D" parent="." unique_id=963999854]
+position = Vector2(0, 500)
 shape = SubResource("RectangleShape2D_ai68l")

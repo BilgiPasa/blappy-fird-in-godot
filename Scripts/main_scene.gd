@@ -84,3 +84,12 @@ func try_again() -> void:
 	Globals.game_ended = false
 	Globals.score = 0
 	get_tree().reload_current_scene()
+
+# Add the signal that the fird collided and add the game_end function to it.
+
+func game_end() -> void:
+	Engine.time_scale = 0
+	Globals.game_ended = true
+	Globals.game_paused = false
+	end_menu.process_mode = Node.PROCESS_MODE_INHERIT
+	end_menu.show()
