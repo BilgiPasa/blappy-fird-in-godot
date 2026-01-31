@@ -1,0 +1,25 @@
+If you want to pause the game, instead of using "Engine.time_scale = 0", I recommend you to use
+"get_tree().pause = true" and setting the process modes of the nodes that you want to pause and not pause.
+Also, make the root's process_mode as Node.PROCESS_MODE_ALWAYS if you are going to stop the game. Because if
+you don't, you can't unpause the game.
+
+For more information:
+    https://docs.godotengine.org/en/stable/tutorials/scripting/pausing_games.html
+
+
+
+If you are going to disable a node that you are getting the signal from in the signal emit function:
+    1. Make a new function
+
+    2. Move the code in the signal emit function to inside of the new function that you made.
+
+    3. Write new_function_name.call_deferred() inside of the signal emit function.
+    (Write the function name of the new function that you made to new_function_name.)
+
+Example code:
+
+func _on_x_body_entered(_body: Node) -> void:
+	disable_x.call_deferred() # Use call_deferred like this.
+
+func disable_x() -> void:
+    x.process_mode = Node.PROCESS_MODE_DISABLED

@@ -9,20 +9,28 @@ extends Node2D
 @onready var reduce_wall_generate_timer: Timer = $ReduceWallGenerateTimer
 var walls_max_offset: int = 150
 var wall_generate_seconds: float = 1.5
-var reduce_wall_generate_seconds: float = 1.5
+var reduce_wall_generate_seconds: float = 15
 var reduce_time_amount: float = 0.1
 var rng: RandomNumberGenerator = RandomNumberGenerator.new();
 var walls_scene = preload("res://Scenes/walls.tscn")
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	start_menu.show()
 	pause_menu.process_mode = Node.PROCESS_MODE_DISABLED
 	pause_menu.hide()
 	end_menu.process_mode = Node.PROCESS_MODE_DISABLED
 	end_menu.hide()
 	score_label.hide()
+	wall_generate_timer.process_mode = Node.PROCESS_MODE_PAUSABLE
+	reduce_wall_generate_timer.process_mode = Node.PROCESS_MODE_PAUSABLE
 
-func _physics_process(_delta):
+func _process(_delta):
+	if Globals.game_paused: # Instead of changing the time scale, you can just pause the game :D
+		get_tree().paused = true
+	else:
+		get_tree().paused = false
+
 	if Globals.game_ended:
 		wall_generate_timer.stop()
 		reduce_wall_generate_timer.stop()
@@ -30,24 +38,22 @@ func _physics_process(_delta):
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		if Globals.game_started:
-			if !Globals.game_paused:
-				if !Globals.game_ended:
+			if !Globals.game_ended:
+				if !Globals.game_paused:
 					pause()
 				else:
-					quit_game()
+					resume()
 			else:
-				resume()
+				quit_game()
 		else:
 			quit_game()
 
 func pause() -> void:
-	Engine.time_scale = 0
 	Globals.game_paused = true
 	pause_menu.process_mode = Node.PROCESS_MODE_INHERIT
 	pause_menu.show()
 
 func resume() -> void:
-	Engine.time_scale = 1
 	Globals.game_paused = false
 	pause_menu.process_mode = Node.PROCESS_MODE_DISABLED
 	pause_menu.hide()
@@ -96,11 +102,17 @@ func try_again() -> void:
 	Globals.score = 0
 	get_tree().reload_current_scene()
 
-# Add the signal that the fird collided and add the game_end function to it.
+func _on_fird_body_entered(_body: Node) -> void:
+	end_game.call_deferred()
 
-func game_end() -> void:
-	Engine.time_scale = 0
+func end_game() -> void:
+	fird.process_mode = Node.PROCESS_MODE_DISABLED # Because of this line, you need to use .call_deferred()
 	Globals.game_ended = true
-	Globals.game_paused = false
+	Globals.game_paused = true # To pause the game after in ends
 	end_menu.process_mode = Node.PROCESS_MODE_INHERIT
 	end_menu.show()
+
+""" In this satuation, you don't need to use ".call_deferred()" if you remove the line
+"fird.process_mode = Node.PROCESS_MODE_DISABLED" because the game stops when you call the end_game function
+because of the "Globals.game_paused = true" code. When the game stops, the fird stops too. But I left
+".call_deferred()" there to not forget how to use the call_deferred function. """

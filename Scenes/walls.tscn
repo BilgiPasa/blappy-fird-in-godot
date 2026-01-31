@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://brc8ty2wff25x"]
 
 [ext_resource type="Texture2D" uid="uid://ch8dnl4b7ph2l" path="res://Materials/BrickWall.png" id="1_2bj67"]
+[ext_resource type="PhysicsMaterial" uid="uid://dw7ek88t8gtrc" path="res://Materials/no_friction_and_bounciness.tres" id="1_ai68l"]
 [ext_resource type="Script" uid="uid://ckowhkdl6fv2l" path="res://Scripts/walls.gd" id="1_cxhnf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cxhnf"]
@@ -9,7 +10,12 @@ size = Vector2(100, 500)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ai68l"]
 size = Vector2(100, 500)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68se6"]
+size = Vector2(100, 500)
+
 [node name="Walls" type="RigidBody2D" unique_id=568220522]
+collision_layer = 5
+physics_material_override = ExtResource("1_ai68l")
 script = ExtResource("1_cxhnf")
 
 [node name="UpperWallSprite" type="Sprite2D" parent="." unique_id=966703805]
@@ -27,3 +33,12 @@ shape = SubResource("RectangleShape2D_cxhnf")
 [node name="LowerWallCollShape" type="CollisionShape2D" parent="." unique_id=963999854]
 position = Vector2(0, 500)
 shape = SubResource("RectangleShape2D_ai68l")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1285382219]
+collision_layer = 9
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1405430671]
+shape = SubResource("RectangleShape2D_68se6")
+
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
