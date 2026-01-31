@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cv5d0hlb335qi" path="res://Scripts/pause_menu.gd" id="1_emv3i"]
 
-[node name="PauseMenu" type="Control" unique_id=1651803569]
+[node name="PauseMenu" type="Control" unique_id=1651803569 node_paths=PackedStringArray("resume_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,6 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_emv3i")
+resume_button = NodePath("Panel/ResumeButton")
 
 [node name="Panel" type="Panel" parent="." unique_id=1405926245]
 layout_mode = 1
@@ -26,13 +27,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -158.5
+offset_left = -178.0
 offset_top = -190.0
-offset_right = 158.5
-offset_bottom = -72.0
+offset_right = 178.0
+offset_bottom = -58.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 80
+theme_override_font_sizes/font_size = 90
 text = "Resume"
 
 [node name="QuitGameButton" type="Button" parent="Panel" unique_id=698974064]
@@ -42,13 +43,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -160.0
-offset_top = 53.000122
-offset_right = 160.0
-offset_bottom = 144.00012
+offset_left = -186.0
+offset_top = 60.0
+offset_right = 186.0
+offset_bottom = 164.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 70
 text = "Quit Game"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

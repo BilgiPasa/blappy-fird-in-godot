@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d08lx3acag610" path="res://Scripts/end_menu.gd" id="1_bg38y"]
 
-[node name="EndMenu" type="Control" unique_id=1585674089]
+[node name="EndMenu" type="Control" unique_id=1585674089 node_paths=PackedStringArray("your_score_was_label", "try_again_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,5 +10,73 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bg38y")
+your_score_was_label = NodePath("Panel/YourScoreWasLabel")
+try_again_button = NodePath("Panel/TryAgainButton")
+
+[node name="Panel" type="Panel" parent="." unique_id=507864265]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="YourScoreWasLabel" type="Label" parent="Panel" unique_id=2092831572]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -323.5
+offset_top = -340.0
+offset_right = 323.5
+offset_bottom = -230.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "Your score was x"
+
+[node name="TryAgainButton" type="Button" parent="Panel" unique_id=1844214081]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -184.5
+offset_top = -140.0
+offset_right = 184.5
+offset_bottom = -21.999878
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../QuitGameButton")
+focus_neighbor_bottom = NodePath("../QuitGameButton")
+focus_next = NodePath("../QuitGameButton")
+focus_previous = NodePath("../QuitGameButton")
+theme_override_font_sizes/font_size = 80
+text = "Try Again"
+
+[node name="QuitGameButton" type="Button" parent="Panel" unique_id=1237712594]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -186.0
+offset_top = 60.0
+offset_right = 186.0
+offset_bottom = 164.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../TryAgainButton")
+focus_neighbor_bottom = NodePath("../TryAgainButton")
+focus_next = NodePath("../TryAgainButton")
+focus_previous = NodePath("../TryAgainButton")
+theme_override_font_sizes/font_size = 70
+text = "Quit Game"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="Panel/TryAgainButton" to="." method="_on_try_again_button_pressed"]
+[connection signal="pressed" from="Panel/QuitGameButton" to="." method="_on_quit_game_button_pressed"]

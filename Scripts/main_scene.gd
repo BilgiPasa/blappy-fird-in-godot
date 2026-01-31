@@ -1,10 +1,10 @@
 extends Node2D
 
 @export var fird: RigidBody2D
-@export var start_menu: Control
+@export var start_menu: Control # Has nothing to do with proccess mode change
 @export var pause_menu: Control
 @export var end_menu: Control
-@export var score_label: Label
+@export var score_label: Label # Has nothing to do with proccess mode change
 @onready var wall_generate_timer: Timer = $WallGenerateTimer
 @onready var reduce_wall_generate_timer: Timer = $ReduceWallGenerateTimer
 var walls_max_offset: int = 150
@@ -12,17 +12,15 @@ var wall_generate_seconds: float = 1.5
 var reduce_wall_generate_seconds: float = 1.5
 var reduce_time_amount: float = 0.1
 var rng: RandomNumberGenerator = RandomNumberGenerator.new();
-# Walls scene goes here
+var walls_scene = preload("res://Scenes/walls.tscn")
 
 func _ready():
-	wall_generate_timer.wait_time = wall_generate_seconds
-	reduce_wall_generate_timer.wait_time = reduce_wall_generate_seconds
-	start_menu.process_mode = Node.PROCESS_MODE_INHERIT
 	start_menu.show()
 	pause_menu.process_mode = Node.PROCESS_MODE_DISABLED
 	pause_menu.hide()
 	end_menu.process_mode = Node.PROCESS_MODE_DISABLED
 	end_menu.hide()
+	score_label.hide()
 
 func _physics_process(_delta):
 	if Globals.game_ended:
@@ -57,14 +55,27 @@ func resume() -> void:
 func quit_game() -> void:
 	get_tree().quit()
 
+func _on_fird_start_game() -> void:
+	score_label.show()
+	start_menu.hide()
+	score_label.text = "0"
+	wall_generate_timer.start(wall_generate_seconds)
+	reduce_wall_generate_timer.start(reduce_wall_generate_seconds)
+
 func _on_wall_generate_timer_timeout() -> void:
-	pass # Replace with function body.
+	var new_walls_scene = walls_scene.instantiate()
+	new_walls_scene.position.x = 1500
+	new_walls_scene.position.y = rng.randi_range(-walls_max_offset, walls_max_offset)
+	new_walls_scene.scored.connect(scored)
+	add_child(new_walls_scene)
+	wall_generate_timer.wait_time = wall_generate_seconds
+
+func scored() -> void:
+	Globals.score += 1
+	score_label.text = str(Globals.score)
 
 func _on_reduce_wall_generate_timer_timeout() -> void:
 	wall_generate_seconds -= reduce_time_amount
-
-func _on_fird_start_game() -> void:
-	pass # Replace with function body.
 
 func _on_pause_menu_quit_game() -> void:
 	quit_game()
