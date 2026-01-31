@@ -28,6 +28,7 @@ position = Vector2(-500, 0)
 [node name="StartMenu" parent="CanvasLayer" unique_id=1215464117 instance=ExtResource("3_iacmt")]
 
 [node name="PauseMenu" parent="CanvasLayer" unique_id=1651803569 instance=ExtResource("4_6ev3c")]
+visible = false
 
 [node name="EndMenu" parent="CanvasLayer" unique_id=1585674089 instance=ExtResource("5_maf8m")]
 offset_top = -3.0
