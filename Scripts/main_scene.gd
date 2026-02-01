@@ -70,8 +70,7 @@ func _on_fird_start_game() -> void:
 
 func _on_wall_generate_timer_timeout() -> void:
 	var new_walls_scene = walls_scene.instantiate()
-	new_walls_scene.position.x = 1500
-	new_walls_scene.position.y = rng.randi_range(-walls_max_offset, walls_max_offset)
+	new_walls_scene.position = Vector2(1250, rng.randi_range(-walls_max_offset, walls_max_offset))
 	new_walls_scene.scored.connect(scored)
 	add_child(new_walls_scene)
 	wall_generate_timer.wait_time = wall_generate_seconds

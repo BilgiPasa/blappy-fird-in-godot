@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends StaticBody2D
 
 signal scored
 
@@ -7,18 +7,16 @@ const SPEED: int = 20
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
-	freeze_mode = RigidBody2D.FREEZE_MODE_KINEMATIC
-	freeze = true
 
-func _physics_process(_delta) -> void:
+func _physics_process(_delta):
 	position += SPEED * Vector2.LEFT
 
-	if position.x < -1500:
+	if position.x < -1250:
 		queue_free()
 
 func _on_score_area_body_exited(_body: Node2D) -> void:
-	disable_and_emit.call_deferred()
+	disable_coll_and_emit.call_deferred()
 
-func disable_and_emit() -> void:
-	score_area.process_mode = Node.PROCESS_MODE_DISABLED
+func disable_coll_and_emit() -> void:
+	score_area.monitoring = false
 	scored.emit()

@@ -11,6 +11,7 @@ func _ready() -> void:
 	gravity_scale = 0
 	contact_monitor = true
 	max_contacts_reported = 5
+	continuous_cd = RigidBody2D.CCD_MODE_CAST_RAY
 
 func _physics_process(_delta) -> void:
 	if jump_input:

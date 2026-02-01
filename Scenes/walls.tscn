@@ -1,7 +1,8 @@
-[gd_scene format=3 uid="uid://brc8ty2wff25x"]
+[gd_scene format=3 uid="uid://dwxtr8ny0yysp"]
 
 [ext_resource type="Texture2D" uid="uid://ch8dnl4b7ph2l" path="res://Materials/BrickWall.png" id="1_2bj67"]
-[ext_resource type="Script" uid="uid://ckowhkdl6fv2l" path="res://Scripts/walls.gd" id="1_cxhnf"]
+[ext_resource type="PhysicsMaterial" uid="uid://dw7ek88t8gtrc" path="res://Materials/no_friction_and_bounciness.tres" id="1_ai68l"]
+[ext_resource type="Script" uid="uid://igqf2l1swqxn" path="res://Scripts/walls.gd" id="1_cxhnf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2bj67"]
 size = Vector2(100, 500)
@@ -10,33 +11,33 @@ size = Vector2(100, 500)
 size = Vector2(100, 500)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ai68l"]
-size = Vector2(100, 500)
+size = Vector2(20, 500)
 
-[node name="Walls" type="RigidBody2D" unique_id=398293450 node_paths=PackedStringArray("score_area")]
-collision_layer = 5
+[node name="Walls" type="StaticBody2D" unique_id=693414823 node_paths=PackedStringArray("score_area")]
+physics_material_override = ExtResource("1_ai68l")
 script = ExtResource("1_cxhnf")
 score_area = NodePath("ScoreArea")
 
-[node name="UpperWallSprite" type="Sprite2D" parent="." unique_id=1879522567]
+[node name="UpperWallSprite" type="Sprite2D" parent="." unique_id=2050497470]
 position = Vector2(0, -500)
 texture = ExtResource("1_2bj67")
 
-[node name="LowerWallSprite" type="Sprite2D" parent="." unique_id=1318378001]
-position = Vector2(0, 500)
-texture = ExtResource("1_2bj67")
-
-[node name="UpperWallCollShape" type="CollisionShape2D" parent="." unique_id=1711685074]
+[node name="UpperWallCollShape" type="CollisionShape2D" parent="." unique_id=612422272]
 position = Vector2(0, -500)
 shape = SubResource("RectangleShape2D_2bj67")
 
-[node name="LowerWallCollShape" type="CollisionShape2D" parent="." unique_id=987867995]
+[node name="LowerWallSprite" type="Sprite2D" parent="." unique_id=1585673237]
+position = Vector2(0, 500)
+texture = ExtResource("1_2bj67")
+
+[node name="LowerWallCollShape" type="CollisionShape2D" parent="." unique_id=1904326906]
 position = Vector2(0, 500)
 shape = SubResource("RectangleShape2D_cxhnf")
 
-[node name="ScoreArea" type="Area2D" parent="." unique_id=1267128531]
+[node name="ScoreArea" type="Area2D" parent="." unique_id=1063067522]
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea" unique_id=1289181923]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea" unique_id=1573576700]
 shape = SubResource("RectangleShape2D_ai68l")
 
 [connection signal="body_exited" from="ScoreArea" to="." method="_on_score_area_body_exited"]
