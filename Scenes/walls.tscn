@@ -11,12 +11,11 @@ size = Vector2(100, 500)
 size = Vector2(100, 500)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ai68l"]
-size = Vector2(20, 500)
+size = Vector2(20, 550)
 
-[node name="Walls" type="StaticBody2D" unique_id=693414823 node_paths=PackedStringArray("score_area")]
+[node name="Walls" type="StaticBody2D" unique_id=693414823]
 physics_material_override = ExtResource("1_ai68l")
 script = ExtResource("1_cxhnf")
-score_area = NodePath("ScoreArea")
 
 [node name="UpperWallSprite" type="Sprite2D" parent="." unique_id=2050497470]
 position = Vector2(0, -500)

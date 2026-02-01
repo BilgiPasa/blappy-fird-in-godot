@@ -9,7 +9,7 @@ extends Node2D
 @onready var reduce_wall_generate_timer: Timer = $ReduceWallGenerateTimer
 var walls_max_offset: int = 150
 var wall_generate_seconds: float = 1.5
-var reduce_wall_generate_seconds: float = 12.5
+var reduce_wall_generate_seconds: float = 10
 var reduce_time_amount: float = 0.1
 var rng: RandomNumberGenerator = RandomNumberGenerator.new();
 var walls_scene = preload("res://Scenes/walls.tscn")

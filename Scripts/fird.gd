@@ -10,7 +10,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 	gravity_scale = 0
 	contact_monitor = true
-	max_contacts_reported = 5
+	max_contacts_reported = 1
 	continuous_cd = RigidBody2D.CCD_MODE_CAST_RAY
 
 func _physics_process(_delta) -> void:
