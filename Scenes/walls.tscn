@@ -5,13 +5,13 @@
 [ext_resource type="Script" uid="uid://igqf2l1swqxn" path="res://Scripts/walls.gd" id="1_cxhnf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2bj67"]
-size = Vector2(100, 500)
+size = Vector2(90, 490)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cxhnf"]
-size = Vector2(100, 500)
+size = Vector2(90, 490)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ai68l"]
-size = Vector2(20, 550)
+size = Vector2(200, 525)
 
 [node name="Walls" type="StaticBody2D" unique_id=693414823]
 physics_material_override = ExtResource("1_ai68l")
@@ -37,6 +37,7 @@ shape = SubResource("RectangleShape2D_cxhnf")
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea" unique_id=1573576700]
+position = Vector2(-50, 0)
 shape = SubResource("RectangleShape2D_ai68l")
 
 [connection signal="body_exited" from="ScoreArea" to="." method="_on_score_area_body_exited"]

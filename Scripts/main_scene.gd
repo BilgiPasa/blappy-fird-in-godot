@@ -116,3 +116,5 @@ func end_game() -> void:
 	end_menu.process_mode = Node.PROCESS_MODE_INHERIT
 	end_menu.show()
 	score_label.hide()
+	pause_menu.process_mode = Node.PROCESS_MODE_DISABLED
+	pause_menu.hide()
