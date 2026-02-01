@@ -9,7 +9,7 @@ extends Node2D
 @onready var reduce_wall_generate_timer: Timer = $ReduceWallGenerateTimer
 var walls_max_offset: int = 150
 var wall_generate_seconds: float = 1.5
-var reduce_wall_generate_seconds: float = 15
+var reduce_wall_generate_seconds: float = 12.5
 var reduce_time_amount: float = 0.1
 var rng: RandomNumberGenerator = RandomNumberGenerator.new();
 var walls_scene = preload("res://Scenes/walls.tscn")
@@ -25,7 +25,7 @@ func _ready():
 	wall_generate_timer.process_mode = Node.PROCESS_MODE_PAUSABLE
 	reduce_wall_generate_timer.process_mode = Node.PROCESS_MODE_PAUSABLE
 
-func _process(_delta):
+func _physics_process(_delta):
 	if Globals.game_paused: # Instead of changing the time scale, you can just pause the game :D
 		get_tree().paused = true
 	else:
@@ -103,16 +103,17 @@ func try_again() -> void:
 	get_tree().reload_current_scene()
 
 func _on_fird_body_entered(_body: Node) -> void:
-	end_game.call_deferred()
+	end_game()
+
+func _on_ceiling_area_body_entered(_body: Node2D) -> void:
+	end_game()
+
+func _on_floor_area_body_entered(_body: Node2D) -> void:
+	end_game()
 
 func end_game() -> void:
-	fird.process_mode = Node.PROCESS_MODE_DISABLED # Because of this line, you need to use .call_deferred()
-	Globals.game_ended = true
 	Globals.game_paused = true # To pause the game after in ends
+	Globals.game_ended = true
 	end_menu.process_mode = Node.PROCESS_MODE_INHERIT
 	end_menu.show()
-
-""" In this satuation, you don't need to use ".call_deferred()" if you remove the line
-"fird.process_mode = Node.PROCESS_MODE_DISABLED" because the game stops when you call the end_game function
-because of the "Globals.game_paused = true" code. When the game stops, the fird stops too. But I left
-".call_deferred()" there to not forget how to use the call_deferred function. """
+	score_label.hide()

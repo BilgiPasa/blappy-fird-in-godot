@@ -6,6 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://dcbn6tmtfv7a2" path="res://Scenes/pause_menu.tscn" id="4_6ev3c"]
 [ext_resource type="PackedScene" uid="uid://cqjdu8i38gbp" path="res://Scenes/end_menu.tscn" id="5_maf8m"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iacmt"]
+size = Vector2(100, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ev3c"]
+size = Vector2(100, 20)
+
 [node name="MainScene" type="Node2D" unique_id=587358703 node_paths=PackedStringArray("fird", "start_menu", "pause_menu", "end_menu", "score_label")]
 script = ExtResource("1_52fb6")
 fird = NodePath("Fird")
@@ -22,6 +28,20 @@ score_label = NodePath("CanvasLayer/ScoreLabel")
 
 [node name="Fird" parent="." unique_id=316009980 instance=ExtResource("2_6l7je")]
 position = Vector2(-500, 0)
+
+[node name="CeilingArea" type="Area2D" parent="." unique_id=2073693543]
+position = Vector2(-500, -675)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CeilingArea" unique_id=1788608205]
+shape = SubResource("RectangleShape2D_iacmt")
+
+[node name="FloorArea" type="Area2D" parent="." unique_id=203483642]
+position = Vector2(-500, 675)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorArea" unique_id=1902834513]
+shape = SubResource("RectangleShape2D_6ev3c")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1202690820]
 
@@ -55,6 +75,8 @@ vertical_alignment = 1
 [connection signal="timeout" from="ReduceWallGenerateTimer" to="." method="_on_reduce_wall_generate_timer_timeout"]
 [connection signal="body_entered" from="Fird" to="." method="_on_fird_body_entered"]
 [connection signal="start_game" from="Fird" to="." method="_on_fird_start_game"]
+[connection signal="body_entered" from="CeilingArea" to="." method="_on_ceiling_area_body_entered"]
+[connection signal="body_entered" from="FloorArea" to="." method="_on_floor_area_body_entered"]
 [connection signal="quit_game" from="CanvasLayer/PauseMenu" to="." method="_on_pause_menu_quit_game"]
 [connection signal="resume" from="CanvasLayer/PauseMenu" to="." method="_on_pause_menu_resume"]
 [connection signal="quit_game" from="CanvasLayer/EndMenu" to="." method="_on_end_menu_quit_game"]

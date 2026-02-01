@@ -5,17 +5,18 @@
 [ext_resource type="PhysicsMaterial" uid="uid://dw7ek88t8gtrc" path="res://Materials/no_friction_and_bounciness.tres" id="1_wcve8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gluwk"]
-radius = 39.0
+radius = 40.0
 
 [node name="Fird" type="RigidBody2D" unique_id=316009980]
 collision_layer = 3
-collision_mask = 13
+collision_mask = 4
 physics_material_override = ExtResource("1_wcve8")
 script = ExtResource("1_qd1s0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2002037398]
+scale = Vector2(1.1, 1.1)
 texture = ExtResource("1_eft4c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1651678596]
-position = Vector2(-5, 1.5)
+position = Vector2(-5, 1)
 shape = SubResource("CircleShape2D_gluwk")

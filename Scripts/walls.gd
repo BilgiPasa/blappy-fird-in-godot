@@ -2,7 +2,8 @@ extends RigidBody2D
 
 signal scored
 
-var speed: int = 20
+@export var score_area: Area2D
+const SPEED: int = 20
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_PAUSABLE
@@ -10,10 +11,14 @@ func _ready() -> void:
 	freeze = true
 
 func _physics_process(_delta) -> void:
-	position += speed * Vector2.LEFT
+	position += SPEED * Vector2.LEFT
 
 	if position.x < -1500:
 		queue_free()
 
-func _on_area_2d_body_exited(_body: Node2D) -> void:
-	emit_signal("scored")
+func _on_score_area_body_exited(_body: Node2D) -> void:
+	disable_and_emit.call_deferred()
+
+func disable_and_emit() -> void:
+	score_area.process_mode = Node.PROCESS_MODE_DISABLED
+	scored.emit()

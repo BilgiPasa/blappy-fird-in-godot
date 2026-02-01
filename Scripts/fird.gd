@@ -3,7 +3,7 @@ extends RigidBody2D
 signal start_game
 
 var fird_gravity_scale: int = 5
-var jump_force: int = 1800
+var jump_force: int = 1750
 var jump_input: bool
 
 func _ready() -> void:
@@ -25,4 +25,4 @@ func _input(event) -> void:
 			gravity_scale = fird_gravity_scale
 			jump_input = true
 			Globals.game_started = true
-			emit_signal("start_game")
+			start_game.emit()
