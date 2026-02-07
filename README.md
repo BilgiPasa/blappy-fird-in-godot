@@ -9,3 +9,9 @@ I made a game named Blappy Fird long time ago using the Unity game engine. This 
 This game is open source and licensed with the MIT licence.
 
 The code of the Unity game that I mentioned is here: https://github.com/BilgiPasa/ScriptsOfBlappyFird
+
+---
+
+TODO:
+
+* Add sounds to the game because this game has no sound.
