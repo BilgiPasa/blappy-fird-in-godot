@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="blappy-fird-in-godot"
+config/version="1.0.1"
 run/main_scene="uid://cuqvarswgfx6c"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://b20jcw50ksk7b"
 
 [autoload]
 

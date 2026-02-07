@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cv5d0hlb335qi" path="res://Scripts/pause_menu.gd" id="1_emv3i"]
 
-[node name="PauseMenu" type="Control" unique_id=1651803569 node_paths=PackedStringArray("resume_button")]
+[node name="PauseMenu" type="Control" unique_id=1651803569 node_paths=PackedStringArray("resume_button", "version_laber")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,6 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_emv3i")
 resume_button = NodePath("Panel/ResumeButton")
+version_laber = NodePath("Panel/VersionLabel")
 
 [node name="Panel" type="Panel" parent="." unique_id=1405926245]
 layout_mode = 1
@@ -52,6 +53,24 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 70
 text = "Quit Game"
+
+[node name="VersionLabel" type="Label" parent="Panel" unique_id=161246069]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -170.0
+offset_top = -80.0
+offset_right = -18.0
+offset_bottom = -11.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "vA.B.C"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="Panel/ResumeButton" to="." method="_on_resume_button_pressed"]

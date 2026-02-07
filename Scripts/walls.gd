@@ -14,7 +14,7 @@ func _physics_process(_delta):
 	if position.x < -1250:
 		queue_free()
 
-func _on_score_area_body_exited(_body: Node2D) -> void:
+func _on_score_area_body_entered(_body: Node2D) -> void:
 	if !emmited:
 		emmited = true
 		scored.emit()
