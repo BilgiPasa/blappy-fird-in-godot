@@ -6,7 +6,7 @@ I made a game named Blappy Fird long time ago using the Unity game engine. This 
 
 This game is open source and licensed with the MIT licence.
 
-For your information, I (BilgiPasa) don't vibe code. I write the code myself.
+For your information, I don't vibe code. I write the code myself.
 
 The code of the Unity game that I mentioned is here: https://github.com/BilgiPasa/ScriptsOfBlappyFird
 
