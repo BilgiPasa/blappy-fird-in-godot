@@ -14,4 +14,6 @@ The code of the Unity game that I mentioned is here: https://github.com/BilgiPas
 
 TODO:
 
+* Use Godot 4.6.1 instead of Godot 4.6.
+
 * Add sounds to the game because this game has no sound.
