@@ -17,3 +17,5 @@ TODO:
 * Use Godot 4.6.1 instead of Godot 4.6.
 
 * Add sounds to the game because this game has no sound.
+
+* Add high score system.
