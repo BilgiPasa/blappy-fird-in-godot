@@ -9,13 +9,3 @@ This game is open source and licensed with the MIT licence.
 I wrote the code of the project myself. **I did not do** "vibe coding".
 
 The code of the Unity game that I mentioned is here: https://github.com/BilgiPasa/ScriptsOfBlappyFird
-
----
-
-TODO:
-
-* Use Godot 4.6.2 instead of Godot 4.6.
-
-* Add sounds to the game because this game has no sound.
-
-* Add high score system.
