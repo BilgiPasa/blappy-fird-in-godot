@@ -2,7 +2,7 @@
 
 This is a Flappy Bird clone that I made for to learn the Godot game engine.
 
-I made a game named Blappy Fird long time ago using the Unity game engine. This is the Godot implementation of that game using Godot 4.6.
+I made a game named "Blappy Fird" long time ago using the Unity game engine. This is the Godot implementation of that game using Godot 4.6.
 
 This game is open source and licensed with the [MIT license](https://github.com/BilgiPasa/blappy-fird-in-godot/blob/main/LICENSE.md).
 
