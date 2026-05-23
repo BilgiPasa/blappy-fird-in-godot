@@ -8,4 +8,4 @@ The project is open source and licensed with the [MIT license](https://github.co
 
 I wrote the code of the project and made the assets of the project myself. **I did not do** "vibe coding".
 
-This is a Godot remake of a Unity game that I made. The scripts of the Unity game is here: https://github.com/BilgiPasa/ScriptsOfBlappyFird
+This is a Godot remake of a Unity game that I made. The scripts of the Unity game is here: https://github.com/BilgiPasa/BlappyFird
