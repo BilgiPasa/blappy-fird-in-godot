@@ -1,8 +1,8 @@
 # blappy-fird-in-godot
 
-This is a Flappy Bird clone that I made for to learn the Godot game engine.
+This is a Flappy Bird clone that I made to learn the Godot game engine.
 
-The project can be used with Godot 4.6.
+The project can be used with Godot 4.6
 
 The project is open source and licensed with the [MIT license](https://github.com/BilgiPasa/blappy-fird-in-godot/blob/main/LICENSE.md).
 
