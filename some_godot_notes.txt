@@ -3,8 +3,7 @@ If you want to pause the game, instead of using "Engine.time_scale = 0", I recom
 Also, make the root's process_mode as Node.PROCESS_MODE_ALWAYS if you are going to stop the game. Because if
 you don't, you can't unpause the game.
 
-For more information:
-    https://docs.godotengine.org/en/stable/tutorials/scripting/pausing_games.html
+For more information: https://docs.godotengine.org/en/stable/tutorials/scripting/pausing_games.html
 
 
 
