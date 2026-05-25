@@ -1,6 +1,6 @@
 # blappy-fird-in-godot
 
-This is a Flappy Bird clone that I made to learn the Godot game engine.
+This is a Flappy Bird clone that I made to learn the [Godot game engine](https://github.com/godotengine/godot).
 
 The project can be used with Godot 4.6
 
