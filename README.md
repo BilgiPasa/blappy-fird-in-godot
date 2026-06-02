@@ -6,4 +6,4 @@ The Godot version of the project is 4.6
 
 The project is open source under the [MIT license](https://gitlab.com/BilgiPasa/blappy-fird-in-godot/-/blob/main/LICENSE.md).
 
-This is the Godot remake of a Unity game that I made. You can access the scripts of the Unity game here: https://gitlab.com/BilgiPasa/BlappyFird
+This is the Godot remake of a Unity game that I made. You can access the scripts of the Unity game here: https://github.com/BilgiPasa/BlappyFird
