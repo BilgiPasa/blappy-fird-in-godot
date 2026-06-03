@@ -8,17 +8,18 @@ For more information: https://docs.godotengine.org/en/stable/tutorials/scripting
 
 
 If you are going to disable a node that you are getting the signal from in the signal emit function:
-    1. Make a new function
+    1. Make a new function.
 
     2. Move the code in the signal emit function to inside of the new function that you made.
 
     3. Write new_function_name.call_deferred() inside of the signal emit function.
-    (Write the function name of the new function that you made to new_function_name.)
+    (Write the name of the new function that you made to new_function_name.)
 
-Example code:
+Example code
+{
+    func _on_x_body_entered(_body: Node) -> void:
+	    disable_x.call_deferred() # Use call_deferred like this.
 
-func _on_x_body_entered(_body: Node) -> void:
-	disable_x.call_deferred() # Use call_deferred like this.
-
-func disable_x() -> void:
-    x.process_mode = Node.PROCESS_MODE_DISABLED
+    func disable_x() -> void:
+        x.process_mode = Node.PROCESS_MODE_DISABLED
+}
