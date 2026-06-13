@@ -18,7 +18,3 @@ func _on_resume_button_pressed() -> void:
 
 func _on_quit_game_button_pressed() -> void:
 	quit_game.emit()
-
-""" Bu arada haberin olsun, UI navigation'da WASD kullanabiliyorum çünkü; "Project Settings"te "Input Map"te
-"Show Built-in Actions" seçeneğini aktive ettim ve ui_up, ui_down, ui_right ve ui_left kısımlarına WASD
-tuşlarını ekledim. """

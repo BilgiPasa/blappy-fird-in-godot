@@ -6,13 +6,13 @@ extends Node2D
 @export var end_menu: Control
 @export var score_label: Label # Has nothing to do with proccess mode change
 @onready var wall_generate_timer: Timer = $WallGenerateTimer
-@onready var reduce_wall_generate_timer: Timer = $ReduceWallGenerateTimer
-var walls_max_offset: int = 150
+@onready var wg_increaser_timer: Timer = $WGIncreaserTimer # WG = Wall Generate
+const WALLS_MAX_OFFSET: int = 150
+const WG_INCREASER_SECONDS: float = 10 # WG = Wall Generate
+const REDUCE_SECONDS_AMOUNT: float = 0.1
+const WALLS_SCENE = preload("res://Scenes/walls.tscn")
 var wall_generate_seconds: float = 1.5
-var reduce_wall_generate_seconds: float = 10
-var reduce_time_amount: float = 0.1
 var rng: RandomNumberGenerator = RandomNumberGenerator.new();
-var walls_scene = preload("res://Scenes/walls.tscn")
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -23,7 +23,7 @@ func _ready():
 	end_menu.hide()
 	score_label.hide()
 	wall_generate_timer.process_mode = Node.PROCESS_MODE_PAUSABLE
-	reduce_wall_generate_timer.process_mode = Node.PROCESS_MODE_PAUSABLE
+	wg_increaser_timer.process_mode = Node.PROCESS_MODE_PAUSABLE
 
 func _physics_process(_delta):
 	if Globals.game_paused: # Instead of changing the time scale, you can just pause the game :D
@@ -33,7 +33,7 @@ func _physics_process(_delta):
 
 	if Globals.game_ended:
 		wall_generate_timer.stop()
-		reduce_wall_generate_timer.stop()
+		wg_increaser_timer.stop()
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
@@ -66,21 +66,22 @@ func _on_fird_start_game() -> void:
 	start_menu.hide()
 	score_label.text = "0"
 	wall_generate_timer.start(wall_generate_seconds)
-	reduce_wall_generate_timer.start(reduce_wall_generate_seconds)
+	wg_increaser_timer.start(WG_INCREASER_SECONDS)
 
 func _on_wall_generate_timer_timeout() -> void:
-	var new_walls_scene = walls_scene.instantiate()
-	new_walls_scene.position = Vector2(1250, rng.randi_range(-walls_max_offset, walls_max_offset))
-	new_walls_scene.scored.connect(scored)
-	add_child(new_walls_scene)
+	var new_ws = WALLS_SCENE.instantiate() # new_walls_scene
+	new_ws.position = Vector2(1250, rng.randi_range(-WALLS_MAX_OFFSET, WALLS_MAX_OFFSET))
+	new_ws.scored.connect(scored)
+	add_child(new_ws)
 	wall_generate_timer.wait_time = wall_generate_seconds
 
 func scored() -> void:
 	Globals.score += 1
 	score_label.text = str(Globals.score)
 
-func _on_reduce_wall_generate_timer_timeout() -> void:
-	wall_generate_seconds -= reduce_time_amount
+func _on_wg_increaser_timer_timeout() -> void:
+	if wall_generate_seconds > REDUCE_SECONDS_AMOUNT:
+		wall_generate_seconds -= REDUCE_SECONDS_AMOUNT
 
 func _on_pause_menu_quit_game() -> void:
 	quit_game()
@@ -111,7 +112,7 @@ func _on_floor_area_body_entered(_body: Node2D) -> void:
 	end_game()
 
 func end_game() -> void:
-	Globals.game_paused = true # To pause the game after in ends
+	Globals.game_paused = true # To pause the game after it ends
 	Globals.game_ended = true
 	end_menu.process_mode = Node.PROCESS_MODE_INHERIT
 	end_menu.show()

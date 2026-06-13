@@ -22,7 +22,7 @@ score_label = NodePath("CanvasLayer/ScoreLabel")
 
 [node name="WallGenerateTimer" type="Timer" parent="." unique_id=2006398014]
 
-[node name="ReduceWallGenerateTimer" type="Timer" parent="." unique_id=283480765]
+[node name="WGIncreaserTimer" type="Timer" parent="." unique_id=283480765]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2004601577]
 
@@ -72,7 +72,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="timeout" from="WallGenerateTimer" to="." method="_on_wall_generate_timer_timeout"]
-[connection signal="timeout" from="ReduceWallGenerateTimer" to="." method="_on_reduce_wall_generate_timer_timeout"]
+[connection signal="timeout" from="WGIncreaserTimer" to="." method="_on_wg_increaser_timer_timeout"]
 [connection signal="body_entered" from="Fird" to="." method="_on_fird_body_entered"]
 [connection signal="start_game" from="Fird" to="." method="_on_fird_start_game"]
 [connection signal="body_entered" from="CeilingArea" to="." method="_on_ceiling_area_body_entered"]
