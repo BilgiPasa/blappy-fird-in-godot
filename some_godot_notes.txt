@@ -6,20 +6,23 @@ you don't, you can't unpause the game.
 For more information: https://docs.godotengine.org/en/stable/tutorials/scripting/pausing_games.html
 
 
+If you want to use WASD keys for UI navigation:
+	Firstly, open Project Settings > Input Map.
+	Then, turn on "Show Built-in Actions".
+	Then, add the WASD keys to ui_up, ui_down, ui_right ve ui_left.
+
 
 If you are going to disable a node that you are getting the signal from in the signal emit function:
-    1. Make a new function.
-
-    2. Move the code in the signal emit function to inside of the new function that you made.
-
-    3. Write new_function_name.call_deferred() inside of the signal emit function.
-    (Write the name of the new function that you made to new_function_name.)
+	Firstly, make a new function.
+	Then, move the code in the signal emit function to inside of the new function that you made.
+	Then, write new_function_name.call_deferred() inside of the signal emit function.
+	(Write the name of the new function that you made to new_function_name.)
 
 Example code
 {
-    func _on_x_body_entered(_body: Node) -> void:
-	    disable_x.call_deferred() # Use call_deferred like this.
+	func _on_x_body_entered(_body: Node) -> void:
+		disable_x.call_deferred() # Use call_deferred like this.
 
-    func disable_x() -> void:
-        x.process_mode = Node.PROCESS_MODE_DISABLED
+	func disable_x() -> void:
+		x.process_mode = Node.PROCESS_MODE_DISABLED
 }
