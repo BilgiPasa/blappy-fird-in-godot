@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="blappy-fird-in-godot"
-config/version="1.1.0"
+config/version="1.1.1"
 run/main_scene="uid://cuqvarswgfx6c"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://c18k4s5cxo7pw"
@@ -88,3 +88,4 @@ common/physics_interpolation=true
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
+environment/defaults/default_clear_color=Color(0.11764706, 0.27450982, 0.39215687, 1)
