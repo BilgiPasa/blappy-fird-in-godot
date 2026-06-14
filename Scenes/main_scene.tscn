@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://6m06vxygur2v" path="res://Scripts/main_scene.gd" id="1_52fb6"]
 [ext_resource type="PackedScene" uid="uid://gk8tp4yay64k" path="res://Scenes/fird.tscn" id="2_6l7je"]
+[ext_resource type="AudioStream" uid="uid://dxn1roj68le64" path="res://Materials/Pickup47.wav" id="2_maf8m"]
+[ext_resource type="AudioStream" uid="uid://cftxhpymlgy17" path="res://Materials/Hit_Hurt23.wav" id="3_huasi"]
 [ext_resource type="PackedScene" uid="uid://bsfpir5v32rp6" path="res://Scenes/start_menu.tscn" id="3_iacmt"]
 [ext_resource type="PackedScene" uid="uid://dcbn6tmtfv7a2" path="res://Scenes/pause_menu.tscn" id="4_6ev3c"]
 [ext_resource type="PackedScene" uid="uid://cqjdu8i38gbp" path="res://Scenes/end_menu.tscn" id="5_maf8m"]
@@ -25,6 +27,12 @@ score_label = NodePath("CanvasLayer/ScoreLabel")
 [node name="WGIncreaserTimer" type="Timer" parent="." unique_id=283480765]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2004601577]
+
+[node name="ScoreSound" type="AudioStreamPlayer2D" parent="." unique_id=689189791]
+stream = ExtResource("2_maf8m")
+
+[node name="GameEndSound" type="AudioStreamPlayer2D" parent="." unique_id=1280055873]
+stream = ExtResource("3_huasi")
 
 [node name="Fird" parent="." unique_id=316009980 instance=ExtResource("2_6l7je")]
 position = Vector2(-500, 0)

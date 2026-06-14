@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b20jcw50ksk7b" path="res://Materials/Fird.png" id="1_eft4c"]
 [ext_resource type="Script" uid="uid://4ljy7xh0ucjk" path="res://Scripts/fird.gd" id="1_qd1s0"]
 [ext_resource type="PhysicsMaterial" uid="uid://dw7ek88t8gtrc" path="res://Materials/no_friction_and_bounciness.tres" id="1_wcve8"]
+[ext_resource type="AudioStream" uid="uid://boa0sqqxfuowd" path="res://Materials/Jump18.wav" id="4_3b3tr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gluwk"]
 radius = 40.0
@@ -20,3 +21,7 @@ texture = ExtResource("1_eft4c")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1651678596]
 position = Vector2(-5, 1)
 shape = SubResource("CircleShape2D_gluwk")
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="." unique_id=395936312]
+stream = ExtResource("4_3b3tr")
+pitch_scale = 0.95

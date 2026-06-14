@@ -7,6 +7,8 @@ extends Node2D
 @export var score_label: Label # Has nothing to do with proccess mode change
 @onready var wall_generate_timer: Timer = $WallGenerateTimer
 @onready var wg_increaser_timer: Timer = $WGIncreaserTimer # WG = Wall Generate
+@onready var score_sound: AudioStreamPlayer2D = $ScoreSound
+@onready var game_end_sound: AudioStreamPlayer2D = $GameEndSound
 const WALLS_MAX_OFFSET: int = 150
 const WG_INCREASER_SECONDS: float = 10 # WG = Wall Generate
 const REDUCE_SECONDS_AMOUNT: float = 0.1
@@ -76,6 +78,7 @@ func _on_wall_generate_timer_timeout() -> void:
 	wall_generate_timer.wait_time = wall_generate_seconds
 
 func scored() -> void:
+	score_sound.play()
 	Globals.score += 1
 	score_label.text = str(Globals.score)
 
@@ -112,6 +115,7 @@ func _on_floor_area_body_entered(_body: Node2D) -> void:
 	end_game()
 
 func end_game() -> void:
+	game_end_sound.play()
 	Globals.game_paused = true # To pause the game after it ends
 	Globals.game_ended = true
 	end_menu.process_mode = Node.PROCESS_MODE_INHERIT
