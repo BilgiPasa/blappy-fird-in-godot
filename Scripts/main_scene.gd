@@ -9,6 +9,7 @@ extends Node2D
 @onready var wg_increaser_timer: Timer = $WGIncreaserTimer # WG = Wall Generate
 @onready var score_sound: AudioStreamPlayer2D = $ScoreSound
 @onready var game_end_sound: AudioStreamPlayer2D = $GameEndSound
+@onready var jump_sound: AudioStreamPlayer2D = $JumpSound
 const WALLS_MAX_OFFSET: int = 150
 const WG_INCREASER_SECONDS: float = 10 # WG = Wall Generate
 const REDUCE_SECONDS_AMOUNT: float = 0.1
@@ -70,6 +71,9 @@ func _on_fird_start_game() -> void:
 	wall_generate_timer.start(wall_generate_seconds)
 	wg_increaser_timer.start(WG_INCREASER_SECONDS)
 
+func _on_fird_play_jump_sound() -> void:
+	jump_sound.play()
+
 func _on_wall_generate_timer_timeout() -> void:
 	var new_ws = WALLS_SCENE.instantiate() # new_walls_scene
 	new_ws.position = Vector2(1250, rng.randi_range(-WALLS_MAX_OFFSET, WALLS_MAX_OFFSET))
@@ -115,9 +119,9 @@ func _on_floor_area_body_entered(_body: Node2D) -> void:
 	end_game()
 
 func end_game() -> void:
-	game_end_sound.play()
 	Globals.game_paused = true # To pause the game after it ends
 	Globals.game_ended = true
+	game_end_sound.play()
 	end_menu.process_mode = Node.PROCESS_MODE_INHERIT
 	end_menu.show()
 	score_label.hide()

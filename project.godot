@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="blappy-fird-in-godot"
-config/version="1.0.2test"
+config/version="1.1.0"
 run/main_scene="uid://cuqvarswgfx6c"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://c18k4s5cxo7pw"

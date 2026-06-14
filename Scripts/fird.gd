@@ -1,8 +1,8 @@
 extends RigidBody2D
 
 signal start_game
+signal play_jump_sound
 
-@onready var jump_sound: AudioStreamPlayer2D = $JumpSound
 const FIRD_GRAVITY_SCALE: int = 5
 const JUMP_FORCE: int = 1750
 var jump_input: bool
@@ -16,7 +16,7 @@ func _ready() -> void:
 
 func _physics_process(_delta) -> void:
 	if jump_input:
-		jump_sound.play()
+		play_jump_sound.emit()
 		jump_input = false
 		linear_velocity = JUMP_FORCE * Vector2.UP
 
