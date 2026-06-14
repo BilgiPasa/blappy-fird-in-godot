@@ -1,7 +1,10 @@
-class_name HighScoreSave extends Resource
+class_name HighScoreSave
+extends Resource
 
-const SAVE_PATH: String = "user://high_score_save"
-var high_score: int
+# THE "@export" PART IS NECESSARY!
+@export var high_score: int = 0
+
+const SAVE_PATH: String = "user://high_score_save.tres"
 
 func save() -> void:
 	ResourceSaver.save(self, SAVE_PATH)
