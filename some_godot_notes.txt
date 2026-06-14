@@ -9,7 +9,7 @@ For more information: https://docs.godotengine.org/en/stable/tutorials/scripting
 If you want to use WASD keys for UI navigation:
 	Firstly, open Project Settings > Input Map.
 	Then, turn on "Show Built-in Actions".
-	Then, add the WASD keys to ui_up, ui_down, ui_right ve ui_left.
+	Then, add the WASD keys to ui_up, ui_left, ui_down and ui_right.
 
 
 If you are going to disable a node that you are getting the signal from in the signal emit function:
