@@ -1,15 +1,15 @@
 extends Node2D
 
 @export var fird: RigidBody2D
-@export var start_menu: Control # Has nothing to do with proccess mode change
+@export var start_menu: Control # No proccess mode change needed
 @export var pause_menu: Control
 @export var end_menu: Control
-@export var score_label: Label # Has nothing to do with proccess mode change
+@export var score_label: Label # No proccess mode change needed
 @onready var wall_generate_timer: Timer = $WallGenerateTimer
 @onready var wg_increaser_timer: Timer = $WGIncreaserTimer # WG = Wall Generate
-@onready var score_sound: AudioStreamPlayer2D = $ScoreSound
-@onready var game_end_sound: AudioStreamPlayer2D = $GameEndSound
-@onready var jump_sound: AudioStreamPlayer2D = $JumpSound
+@onready var score_sound: AudioStreamPlayer2D = $ScoreSound # No proccess mode change needed
+@onready var game_end_sound: AudioStreamPlayer2D = $GameEndSound # No proccess mode change needed
+@onready var jump_sound: AudioStreamPlayer2D = $JumpSound # No proccess mode change needed
 const WALLS_MAX_OFFSET: int = 150
 const WG_INCREASER_SECONDS: float = 10 # WG = Wall Generate
 const REDUCE_SECONDS_AMOUNT: float = 0.1
@@ -29,25 +29,24 @@ func _ready():
 	wg_increaser_timer.process_mode = Node.PROCESS_MODE_PAUSABLE
 
 func _physics_process(_delta):
-	if Globals.game_paused: # Instead of changing the time scale, you can just pause the game :D
+	# Instead of changing the time scale, you can just pause the game.
+	if Globals.game_paused:
 		get_tree().paused = true
 	else:
 		get_tree().paused = false
 
+	# If game ends, stop the timers.
 	if Globals.game_ended:
 		wall_generate_timer.stop()
 		wg_increaser_timer.stop()
 
 func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		if Globals.game_started:
-			if !Globals.game_ended:
-				if !Globals.game_paused:
-					pause()
-				else:
-					resume()
+	if event.is_action_pressed("ui_cancel"): # If "esc" key pressed
+		if Globals.game_started && !Globals.game_ended:
+			if !Globals.game_paused:
+				pause()
 			else:
-				quit_game()
+				resume()
 		else:
 			quit_game()
 

@@ -9,6 +9,7 @@ const SAVE_PATH: String = "user://high_score_save.tres"
 func save() -> void:
 	ResourceSaver.save(self, SAVE_PATH)
 
+# If there is a save, load the save. If there is no save, create a save.
 static func load_or_create() -> HighScoreSave:
 	var res: HighScoreSave
 

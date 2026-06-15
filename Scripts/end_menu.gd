@@ -11,6 +11,7 @@ func _on_visibility_changed() -> void:
 	if visible:
 		your_score_was_label.text = "Your score was " + str(Globals.score)
 
+		# Saving the high score
 		if Globals.high_score_save.high_score < Globals.score:
 			Globals.high_score_save.high_score = Globals.score
 			Globals.high_score_save.save()

@@ -11,6 +11,7 @@ func _ready() -> void:
 func _physics_process(_delta):
 	position += SPEED * Vector2.LEFT
 
+	# If the wall goes too far, delete it.
 	if position.x < -1250:
 		queue_free()
 
