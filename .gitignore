@@ -2,5 +2,5 @@
 .godot/
 /android/
 
-# Ignoring the .vscode folder
+# Ignore the .vscode file
 .vscode/
