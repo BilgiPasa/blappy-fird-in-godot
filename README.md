@@ -2,7 +2,7 @@
 
 This is a Flappy Bird clone that I made to learn the [Godot game engine](https://github.com/godotengine/godot).
 
-The Godot version of the project is 4.6.3
+The Godot version of the project is 4.6
 
 The project is open source under the [MIT license](https://gitlab.com/BilgiPasa/blappy-fird-in-godot/-/blob/main/LICENSE.md).
 
