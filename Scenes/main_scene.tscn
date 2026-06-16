@@ -64,8 +64,6 @@ visible = false
 
 [node name="EndMenu" parent="CanvasLayer" unique_id=1585674089 instance=ExtResource("5_maf8m")]
 visible = false
-offset_top = -3.0
-offset_bottom = -3.0
 
 [node name="ScoreLabel" type="Label" parent="CanvasLayer" unique_id=240892247]
 visible = false
