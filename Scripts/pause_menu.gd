@@ -4,10 +4,10 @@ signal resume
 signal quit_game
 
 @export var resume_button: Button
-@export var version_laber: Label
+@export var version_label: Label
 
 func _ready() -> void:
-	version_laber.text = "v" + str(ProjectSettings.get_setting("application/config/version"))
+	version_label.text = "v" + str(ProjectSettings.get_setting("application/config/version"))
 
 func _on_visibility_changed() -> void:
 	if visible:

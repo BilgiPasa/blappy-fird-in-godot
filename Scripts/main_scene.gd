@@ -29,12 +29,6 @@ func _ready():
 	wg_increaser_timer.process_mode = Node.PROCESS_MODE_PAUSABLE
 
 func _physics_process(_delta):
-	# Instead of changing the time scale, you can just pause the game.
-	if Globals.game_paused:
-		get_tree().paused = true
-	else:
-		get_tree().paused = false
-
 	# If game ends, stop the timers.
 	if Globals.game_ended:
 		wall_generate_timer.stop()
@@ -43,7 +37,7 @@ func _physics_process(_delta):
 func _input(event):
 	if event.is_action_pressed("ui_cancel"): # If "esc" key pressed
 		if Globals.game_started && !Globals.game_ended:
-			if !Globals.game_paused:
+			if !get_tree().paused:
 				pause()
 			else:
 				resume()
@@ -51,12 +45,12 @@ func _input(event):
 			quit_game()
 
 func pause() -> void:
-	Globals.game_paused = true
+	get_tree().paused = true
 	pause_menu.process_mode = Node.PROCESS_MODE_INHERIT
 	pause_menu.show()
 
 func resume() -> void:
-	Globals.game_paused = false
+	get_tree().paused = false
 	pause_menu.process_mode = Node.PROCESS_MODE_DISABLED
 	pause_menu.hide()
 
@@ -103,9 +97,9 @@ func _on_end_menu_try_again() -> void:
 
 func try_again() -> void:
 	Globals.game_started = false
-	Globals.game_paused = false
 	Globals.game_ended = false
 	Globals.score = 0
+	get_tree().paused = false
 	get_tree().reload_current_scene()
 
 func _on_fird_body_entered(_body: Node) -> void:
@@ -118,7 +112,7 @@ func _on_floor_area_body_entered(_body: Node2D) -> void:
 	end_game()
 
 func end_game() -> void:
-	Globals.game_paused = true # To pause the game after it ends
+	get_tree().paused = true # Pause the game after it ends
 	Globals.game_ended = true
 	game_end_sound.play()
 	end_menu.process_mode = Node.PROCESS_MODE_INHERIT

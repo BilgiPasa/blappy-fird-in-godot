@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cv5d0hlb335qi" path="res://Scripts/pause_menu.gd" id="1_emv3i"]
 
-[node name="PauseMenu" type="Control" unique_id=1651803569 node_paths=PackedStringArray("resume_button", "version_laber")]
+[node name="PauseMenu" type="Control" unique_id=1651803569 node_paths=PackedStringArray("resume_button", "version_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_emv3i")
 resume_button = NodePath("Panel/ResumeButton")
-version_laber = NodePath("Panel/VersionLabel")
+version_label = NodePath("Panel/VersionLabel")
 
 [node name="Panel" type="Panel" parent="." unique_id=1405926245]
 layout_mode = 1
@@ -34,6 +34,10 @@ offset_right = 178.0
 offset_bottom = -58.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_top = NodePath("../QuitGameButton")
+focus_neighbor_bottom = NodePath("../QuitGameButton")
+focus_next = NodePath("../QuitGameButton")
+focus_previous = NodePath("../QuitGameButton")
 theme_override_font_sizes/font_size = 90
 text = "Resume"
 
@@ -50,6 +54,10 @@ offset_right = 186.0
 offset_bottom = 164.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_top = NodePath("../ResumeButton")
+focus_neighbor_bottom = NodePath("../ResumeButton")
+focus_next = NodePath("../ResumeButton")
+focus_previous = NodePath("../ResumeButton")
 theme_override_font_sizes/font_size = 70
 text = "Quit Game"
 
